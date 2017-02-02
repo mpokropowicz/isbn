@@ -18,10 +18,9 @@ def calculate_checksum(num)
 	sum = 0
 	index = 1
 
-	if num[num.length - 1].upcase == "X"
+	num.chop!
 
-		num.delete!(num[num.length - 1])
-	end
+	puts num
 
 	num.each_char do |number|
 
@@ -42,3 +41,10 @@ def correct_checksum?(num)
 		calculate_checksum(num) == num[length - 1]
 	end
 end
+
+def is_valid_ISBN?(num)
+
+	
+end
+
+#print calculate_checksum("0471958697")
