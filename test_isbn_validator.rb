@@ -20,6 +20,6 @@ class TestISBN < Minitest::Test
 
 	def test_is_valid_ISBN
 
-		assert_equal(true, is_valid_ISBN_10?("9780470059029"))
+		assert_equal(true, is_valid_ISBN("9782207258040"))
 	end
 end
