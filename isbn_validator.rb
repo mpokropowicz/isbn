@@ -17,8 +17,29 @@ def calculate_checksum(num)
 
 	sum = 0
 	index = 1
+	alternating_multiplyer = 1
 
 	num = num.chop
+
+	if num.length == 12
+
+		(num.length - 1).times do |i|
+
+			if alternating_multiplyer == 3
+
+				sum += (num[i].to_i * alternating_multiplyer)
+				alternating_multiplyer = 1
+			end
+
+			if alternating_multiplyer == 1
+
+				sum+= (num[i].to_i * alternating_multiplyer)
+				alternating_multiplyer = 3
+			end
+		end
+
+		return (((sum % 10) - 10) % 10).to_s
+	end
 
 	num.each_char do |number|
 
@@ -26,7 +47,7 @@ def calculate_checksum(num)
 		index += 1
 	end
 
-	return (sum % 11).to_s
+	(sum % 11).to_s
 end
 
 def correct_checksum?(num)
@@ -61,7 +82,7 @@ def is_valid_ISBN_10?(num)
 
 	num = remove_spaces_and_dashes(num)
 
-	if num.length == 10 && correct_checksum?(num) && !contains_nonvalids?(num)
+	if correct_checksum?(num) && !contains_nonvalids?(num)
 
 		return true
 	else
@@ -72,5 +93,5 @@ end
 # # puts remove_spaces_and_dashes("0471958697")
 
 #print is_valid_ISBN_10?("0471958697")
-
-# #print calculate_checksum("0471958697")
+#print correct_checksum?("0471958697")
+#print calculate_checksum("9780470059029")
