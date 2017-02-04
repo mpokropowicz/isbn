@@ -42,11 +42,9 @@ def get_checksum()
 	(sum % 11).to_s
 end
 
-def length
+def get_length
 
 	@number.length
 end
-
-
 
 end
