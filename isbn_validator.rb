@@ -107,11 +107,13 @@ def is_valid_ISBN?(num)
 	if num.length == 10
 
 		is_valid_ISBN_10?(num)
-	end
 
-	if num.length == 13
+	elsif num.length == 13
 
 		is_valid_ISBN_13?(num)
+	else
+
+		false
 	end
 end
 
