@@ -75,7 +75,7 @@ def correct_x?(num)
 
 	if num.upcase.include? "X"
 
-		num.upcase.index("X") == num.length - 1
+		return num.upcase.index("X") == num.length - 1
 	end
 	
 	true
@@ -121,7 +121,7 @@ def is_valid_ISBN?(num)
 end
 
 #puts remove_spaces_and_dashes("0471958697")
-print correct_x?("0471958697")
-print correct_checksum?("0471958697")
+#print correct_x?("0471958697")
+#2print correct_checksum?("0471958697")
 # puts calculate_checksum("9782207258040")
 # print calculate_checksum("9780470059029")
