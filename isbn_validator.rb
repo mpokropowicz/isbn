@@ -83,8 +83,6 @@ end
 
 def is_valid_ISBN_10?(num)
 
-	num = remove_spaces_and_dashes(num)
-
 	if correct_checksum?(num) && !contains_nonvalids?(num) && correct_x?(num)
 
 		return true
@@ -96,8 +94,6 @@ end
 
 def is_valid_ISBN_13?(num)
 
-	num = remove_spaces_and_dashes(num)
-
 	if correct_checksum?(num) && !contains_nonvalids?(num)
 
 		return true
@@ -108,6 +104,8 @@ end
 
 
 def is_valid_ISBN?(num)
+
+	num = remove_spaces_and_dashes(num)
 
 	if num.length == 10
 
