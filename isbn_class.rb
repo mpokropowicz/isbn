@@ -1,8 +1,8 @@
 class ISBN
 
-def initialize(number)
+def initialize(isbn)
 
-	@number = number
+	@isbn = isbn
 end
 
 def get_checksum()
@@ -11,21 +11,21 @@ def get_checksum()
 	index = 1
 	alternating_multiplyer = 1
 
-	@number = @number.chop
+	@isbn = @isbn.chop
 
-	if @number.length == 12
+	if @isbn.length == 12
 
-		(@number.length - 1).times do |i|
+		(@isbn.length - 1).times do |i|
 
 			if alternating_multiplyer == 3
 
-				sum += (@number[i].to_i * alternating_multiplyer)
+				sum += (@isbn[i].to_i * alternating_multiplyer)
 				alternating_multiplyer = 1
 			end
 
 			if alternating_multiplyer == 1
 
-				sum+= (@number[i].to_i * alternating_multiplyer)
+				sum+= (@isbn[i].to_i * alternating_multiplyer)
 				alternating_multiplyer = 3
 			end
 		end
@@ -33,7 +33,7 @@ def get_checksum()
 		return (((sum % 10) - 10) % 10).to_s
 	end
 
-	@number.each_char do |number|
+	@isbn.each_char do |number|
 
 		sum += (number.to_i * index)
 		index += 1
@@ -44,7 +44,7 @@ end
 
 def get_length
 
-	@number.length
+	@isbn.length
 end
 
 end

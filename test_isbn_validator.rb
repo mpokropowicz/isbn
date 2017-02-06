@@ -10,7 +10,7 @@ class TestISBN < Minitest::Test
 
 	def test_correct_checksum
 
-		assert_equal("10", calculate_checksum("877195869x"))
+		assert_equal("10", calculate_checksum_10("877195869x"))
 	end
 
 	def test_is_good_checksum
@@ -20,6 +20,6 @@ class TestISBN < Minitest::Test
 
 	def test_is_valid_ISBN
 
-		assert_equal(true, is_valid_ISBN?("04719 5869  - -7"))
+		assert_equal(true, is_valid_ISBN?("877195869x"))
 	 end
 end
