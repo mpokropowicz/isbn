@@ -5,9 +5,7 @@ end
 
 def calculate_checksum_10(num)
 
-	sum = 0
-	index = 1
-	num = num.chop
+	sum = 0; index = 1; num = num.chop
 
 	num.each_char {|number| sum += (number.to_i * index); index += 1}
 	(sum % 11).to_s
@@ -15,10 +13,7 @@ end
 
 def calculate_checksum_13(num)
 
-	sum = 0
-	index = 0
-	num = num.chop
-	alternating_multiplier = [1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3]
+	sum = 0; index = 0; num = num.chop; alternating_multiplier = [1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3]
 
 	num.each_char {|number| sum += (number.to_i * alternating_multiplier[index]); index += 1}
 	((10 - (sum % 10)) % 10).to_s
