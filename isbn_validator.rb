@@ -1,6 +1,6 @@
-def remove_spaces_and_dashes(num)
+def remove_nonvalid_characters(num)
 
-	num.delete(" " "-")
+	num.gsub(/\D/, '')
 end
 
 def calculate_checksum_10(num)
@@ -26,13 +26,6 @@ def correct_checksum?(num)
 	if num.length == 10 then return calculate_checksum_10(num) == num[-1] end
 end
 
-def contains_nonvalids?(num)
- 
-	num.delete!("xX0123456789")
-
-	num.length > 0 ? true : false
-end
-
 def correct_x?(num)
 
 	num.upcase.include?("X") ? (num.upcase.index("X") == num.length - 1) : true
@@ -40,27 +33,17 @@ end
 
 def is_valid_ISBN_10?(num)
 
-	correct_checksum?(num) && !contains_nonvalids?(num) && correct_x?(num) ? true : false
+	correct_checksum?(num) && correct_x?(num) ? true : false
 end
-
 
 def is_valid_ISBN_13?(num)
 
-	correct_checksum?(num) && !contains_nonvalids?(num) ? true : false
+	correct_checksum?(num) ? true : false
 end
-
 
 def is_valid_ISBN?(num)
 
-	num = remove_spaces_and_dashes(num)
+	num = remove_nonvalid_characters(num)
 
 	num.length == 10 ? is_valid_ISBN_10?(num) : num.length == 13 ? is_valid_ISBN_13?(num) : false
 end
-
-#puts remove_spaces_and_dashes("0471958697")
-#print correct_x?("0471958697")
-#print correct_checksum?("877195869x")
-# puts calculate_checksum("9782207258040")
-#print calculate_checksum_10("877195869x")
-#print contains_nonvalids?("877195869x")
-#print is_valid_ISBN?("877195869x")
