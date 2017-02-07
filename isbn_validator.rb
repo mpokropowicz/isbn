@@ -1,6 +1,6 @@
 def remove_nonvalid_characters(num)
 
-	num.gsub(/\D/, '')
+	num.upcase.gsub(/[^0-9X]/, '')
 end
 
 def calculate_checksum_10(num)
@@ -47,3 +47,5 @@ def is_valid_ISBN?(num)
 
 	num.length == 10 ? is_valid_ISBN_10?(num) : num.length == 13 ? is_valid_ISBN_13?(num) : false
 end
+
+print remove_nonvalid_characters("978220%&^%jkb7258040x")
