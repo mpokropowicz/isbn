@@ -1,6 +1,6 @@
 def remove_nonvalid_characters(num)
 
-	num.upcase.gsub(/[^0-9X]/, '')
+	num.length == 10 ? num.upcase.gsub(/[^0-9X]/, '') : num.upcase.gsub(/[^0-9]/, '')
 end
 
 def calculate_checksum_10(num)
@@ -21,7 +21,7 @@ end
 
 def correct_checksum?(num)
 
-	if num[-1].upcase == "X" then return (calculate_checksum_10(num) == "10") end
+	if num[-1].upcase == "X" && num.length == 10 then return (calculate_checksum_10(num) == "10") end
 	if num.length == 13 then return calculate_checksum_13(num) == num[-1] end
 	if num.length == 10 then return calculate_checksum_10(num) == num[-1] end
 end
@@ -47,5 +47,3 @@ def is_valid_ISBN?(num)
 
 	num.length == 10 ? is_valid_ISBN_10?(num) : num.length == 13 ? is_valid_ISBN_13?(num) : false
 end
-
-print remove_nonvalid_characters("978220%&^%jkb7258040x")
