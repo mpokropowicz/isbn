@@ -5,7 +5,7 @@ class TestISBN < Minitest::Test
 
 	def test_removes_spaces_and_dashes
 
-		assert_equal("0471958697", remove_spaces_and_dashes("04 7-1-9 58 69-7"))
+		assert_equal("0471958697", remove_nonvalid_characters("04 7-1-9 58 69-7"))
 	end
 
 	def test_correct_checksum
@@ -20,6 +20,6 @@ class TestISBN < Minitest::Test
 
 	def test_is_valid_ISBN
 
-		assert_equal(true, is_valid_ISBN?("877195869x"))
+		assert_equal(true, is_valid_ISBN?("0321146530"))
 	 end
 end

@@ -1,50 +1,75 @@
 class ISBN
 
-def initialize(isbn)
+	ISBN10_REGEX = /\d{9}[\d|X]$/i 
+	ISBN13_REGEX = /\d{13}/i
 
-	@isbn = isbn
-end
+	def initialize(isbn)
 
-def get_checksum()
+		@isbn = isbn.delete(" -")
+		@type = nil
+	end
 
-	sum = 0
-	index = 1
-	alternating_multiplyer = 1
+	def valid_checksum10?
 
-	@isbn = @isbn.chop
+		isbn = @isbn; sum = 0; checksum = isbn[-1]; isbn.chop!
+		checksum = (checksum.upcase == 'X') ? 10 : checksum.to_i
 
-	if @isbn.length == 12
+		isbn.each_char.with_index {|number, index| sum += number.to_i * (index + 1)}
 
-		(@isbn.length - 1).times do |i|
+		(sum % 11) == checksum
+	end
 
-			if alternating_multiplyer == 3
+	def valid_checksum13?
 
-				sum += (@isbn[i].to_i * alternating_multiplyer)
-				alternating_multiplyer = 1
-			end
+		isbn = @isbn; sum = 0; checksum = isbn[-1].to_i; isbn.chop!
 
-			if alternating_multiplyer == 1
-
-				sum+= (@isbn[i].to_i * alternating_multiplyer)
-				alternating_multiplyer = 3
-			end
+		isbn.each_char.with_index do |number, index|
+			
+			multiplier = (index % 2 == 0) ? 1 : 3
+			sum += number.to_i * multiplier
 		end
 
-		return (((sum % 10) - 10) % 10).to_s
+		((10 - (sum % 10)) % 10) == checksum
 	end
 
-	@isbn.each_char do |number|
+	def set_isbn(isbn)
 
-		sum += (number.to_i * index)
-		index += 1
+		@isbn = isbn
 	end
 
-	(sum % 11).to_s
+	def get_checksum
+
+		@isbn[-1]
+	end
+
+	def get_type
+
+		length = @isbn.length
+
+		case length
+
+			when 10 then if @isbn.match(ISBN10_REGEX) then @type = "10" end
+			when 13 then if @isbn.match(ISBN13_REGEX) then @type = "13" end
+		end
+
+		@type
+	end
+
+	def to_s
+
+		print "#{@isbn}"
+	end
 end
 
-def get_length
+def is_valid_ISBN?(num)
 
-	@isbn.length
-end
+	isbn = ISBN.new(num)
+	type = isbn.get_type
 
+	case type
+
+		when "10" then isbn.valid_checksum10?
+		when "13" then isbn.valid_checksum13?
+		when nil then false
+	end
 end

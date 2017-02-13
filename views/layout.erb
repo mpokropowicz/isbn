@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <title>ISBN</title>
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 	<header class="header-main">
+ 		<section>
+ 			<div id="home" class="main-text-box">
+ 				<h1>ISBN Validation</h1>
+ 				<a class="btn-header" href="#about">Learn More</a>
+ 			</div>
+ 		</section>
+ 	</header>
+
+ 	<div class="row">
+ 		<div>About</div>
+ 	</div>
+
+ 	<main>
+ 		<section id="about" class="validate">
+ 			<div>
+ 				<header class="validate-header">
+ 					<h2>What is an ISBN?</h2>
+ 					<article class="about-text">
+ 						<p>The International Standard Book Number (ISBN) is a unique numeric commercial book identifier.
+ 						</p>
+
+<p>An ISBN is assigned to each edition and variation (except reprintings) of a book. For example, an e-book, a paperback and a hardcover edition of the same book would each have a different ISBN. The ISBN is 13 digits long if assigned on or after 1 January 2007, and 10 digits long if assigned before 2007. The method of assigning an ISBN is nation-based and varies from country to country, often depending on how large the publishing industry is within a country.</p>
+
+<p>The initial ISBN configuration of recognition was generated in 1967 based upon the 9-digit Standard Book Numbering (SBN) created in 1966. The 10-digit ISBN format was developed by the International Organization for Standardization (ISO) and was published in 1970 as international standard ISO 2108 (the SBN code can be converted to a ten digit ISBN by prefixing it with a zero).
+						</p>
+ 					</article>
+ 				</header>
+ 			</div>
+
+ 		</section>
+
+ 		<div class="row">
+ 			<div>Validation</div>
+ 		</div>
+
+ 		<section id="validation" class="validate">
+ 			<div>
+ 				<header class="validate-header">
+ 				<h2>Let's Validate an ISBN</h2>
+ 				<h3>Enter a number below to check if it's a valid ISBN-10 or ISBN-13</h3>
+ 					<form method="post" action="/isbn" align="center" href="#validation"> 
+           				<input type="text" name="num"> 
+            		</form>
+
+            		<%= yield %>
+ 				</header>
+    		</div>
+ 		</section>
+ 	</main>
+
+
+
+</body>
