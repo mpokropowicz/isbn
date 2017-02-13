@@ -47,8 +47,9 @@
  				<header class="validate-header">
  				<h2>Let's Validate an ISBN</h2>
  				<h3>Enter a number below to check if it's a valid ISBN-10 or ISBN-13</h3>
- 					<form method="post" action="/isbn" align="center" href="#validation"> 
-           				<input type="text" name="num"> 
+ 					<form method="post" action="/isbn" align="center"> 
+           				<input required="" type="text" name="num">
+           				<label alt='Enter a number' placeholder="Your ISBN number :"></label> 
             		</form>
 
             		<%= yield %>

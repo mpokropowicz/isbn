@@ -10,7 +10,7 @@ end
 
 post "/isbn" do
 
-	num = params[:num]
+	@num = params[:num]
 	@ans = is_valid_ISBN?(num) ? "valid" : "not valid" 
 	erb :post_isbn
 end
